@@ -90,4 +90,8 @@ ZX2.alwaysUnlocked = false;
 ZX2.addStartingItems = true;
 ZX2.captureWave = 13;
 ZX2.localizedName = "地火";
+ZX2.rules = (r) => {
+    r.attackMode = false;
+    r.winWave = ZX2.captureWave;
+}
 exports.ZX2 = ZX2;

@@ -43,7 +43,31 @@ exports.大型超导电池 = DXCDDC;
 const TFDJ = new ConsumeGenerator("碳发电机");
 exports.碳发电机 = TFDJ;
 
-const ZSHFYD = new NuclearReactor("重水核反应堆");
+const ZSHFYD = extend(NuclearReactor, "重水核反应堆", {});
+ZSHFYD.buildType = prov(() => {
+	return extend(NuclearReactor.NuclearReactorBuild, ZSHFYD, {
+		draw(){
+            this.super$draw();
+
+            Draw.color(this.block.coolColor, this.block.hotColor, this.heat);
+            Fill.rect(this.x, this.y, this.block.size * Vars.tilesize, this.block.size * Vars.tilesize);
+
+
+            Draw.color(Liquids.cryofluid.color);
+            Draw.alpha(this.liquids.get(Liquids.cryofluid) / this.block.liquidCapacity);
+            Draw.rect(this.block.topRegion, this.x, this.y);
+
+            if(this.heat > this.block.flashThreshold){
+                this.flash += (1 + ((this.heat - this.block.flashThreshold) / (1 - this.block.flashThreshold)) * 5.4) * Time.delta;
+                Draw.color(Color.red, Color.yellow, Mathf.absin(this.flash, 9, 1));
+                Draw.alpha(0.3);
+                Draw.rect(this.block.lightsRegion, this.x, this.y);
+            }
+
+            Draw.reset();
+        }
+	});
+});
 exports.重水核反应堆 = ZSHFYD;
 
 //辅助
@@ -101,15 +125,7 @@ const WXHXJZ = extend(CoreBlock, "微型核心基座", {
 	},
 	canPlaceOn(tile, team, rotation) {
 		if(tile == null) return false;
-		/*
-		var tempTiles = Seq.with();
-		tile.getLinkedTilesAs(this, tempTiles);
-        if(tempTiles.contains(o => o.floor().cantPlaceMiniCore != null && o.floor().cantPlaceMiniCore)){
-            return false;
-        }
-		*/
 		if(tile.floor() == JHXQ || tile.floor().cantPlaceMiniCore) return false;
-
 		return Vars.state.teams.cores(team).size < 12;
 	},
 	drawPlace(x, y, rotation, valid) {

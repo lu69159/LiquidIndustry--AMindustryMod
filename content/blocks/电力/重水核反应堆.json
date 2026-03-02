@@ -83,17 +83,5 @@
 	"category": "power",
 	"research": "thorium-reactor",
 
-	"lightLiquid": "cryofluid",
-	"drawer":{
-		"type": "DrawMulti",
-		"drawers": [
-			{
-				"type": "DrawLiquidTile",
-                "drawLiquid": "cryofluid"
-			},
-			{
-				"type": "DrawDefault"
-			}
-		]
-	}
+	"lightLiquid": "cryofluid"
 }

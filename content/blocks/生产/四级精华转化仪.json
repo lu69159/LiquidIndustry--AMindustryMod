@@ -45,14 +45,16 @@
                 "suffix": "-bottom"
             },
             {
-                "type": "DrawArcSmelt",
-                "flameColor": "C7C9DC80"
-            },
-            {
                 "type": "DrawLiquidTile",
                 "drawLiquid": "四级浓缩精华液",
                 "padding": 6
             }, 
+            {
+                "type": "DrawPlasma",
+                "plasma1":"B7BADA80",
+                "plasma2":"FFFFFF66",
+                "plasma3":"B7BADA80"
+            },
             "DrawDefault",
             {
 				"type": "DrawFade",

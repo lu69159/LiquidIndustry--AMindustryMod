@@ -51,9 +51,9 @@
             }, 
             {
                 "type": "DrawPlasma",
-                "plasma1":"B7BADA80",
-                "plasma2":"FFFFFF66",
-                "plasma3":"B7BADA80"
+                "plasma1":"6F6F6F",
+                "plasma2":"8F8F8F",
+                "plasma3":"AFAFAF"
             },
             "DrawDefault",
             {

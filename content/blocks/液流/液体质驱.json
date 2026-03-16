@@ -13,7 +13,7 @@
 		"titanium/180",
         "thorium/100",
         "silicon/150",
-        "亲水质/20"
+        "亲水质/10"
     ],
 	"category": "liquid",
 	"research": "phase-conduit"

@@ -25,8 +25,8 @@
         "超导质/1"
 	],
     "results": [
-        {"item": "phase-fabric","amount": 5},
-        {"item": "plastanium","amount": 5},
+        {"item": "phase-fabric","amount": 6},
+        {"item": "plastanium","amount": 6},
         {"item": "surge-alloy","amount": 4},
         {"item": "亲水质","amount": 1}
     ],

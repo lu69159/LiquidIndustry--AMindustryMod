@@ -9,7 +9,7 @@ map1cs.localizedName = "测试区";
 exports.map1cs = map1cs;
 
 const map2xc = new SectorPreset("狭长冰谷", NT, 38);
-map2xc.difficulty = 8;
+map2xc.difficulty = 4;
 map2xc.noLighting = false;
 map2xc.alwaysUnlocked = false;
 map2xc.addStartingItems = true;
@@ -18,7 +18,7 @@ map2xc.localizedName = "狭长冰谷";
 exports.map2xc = map2xc;
 
 const map3jb = new SectorPreset("极冰溶洞", NT, 56);
-map3jb.difficulty = 14;
+map3jb.difficulty = 7;
 map3jb.noLighting = false;
 map3jb.alwaysUnlocked = false;
 map3jb.addStartingItems = true;
@@ -30,7 +30,7 @@ map3jb.rules = (r) => {
 exports.map3jb = map3jb;
 
 const map4yy = new SectorPreset("永夜荒地", NT, 4);
-map4yy.difficulty = 14;
+map4yy.difficulty = 8;
 map4yy.noLighting = false;
 map4yy.alwaysUnlocked = false;
 map4yy.addStartingItems = true;
@@ -39,7 +39,7 @@ map4yy.localizedName = "永夜荒地";
 exports.map4yy = map4yy;
 
 const map5jg = new SectorPreset("极光壁垒", NT, 54);
-map5jg.difficulty = 16;
+map5jg.difficulty = 8;
 map5jg.noLighting = false;
 map5jg.alwaysUnlocked = false;
 map5jg.addStartingItems = true;
@@ -75,7 +75,7 @@ JC2.rules = (r) => {
 exports.JC2 = JC2;
 
 const ZX1 = new SectorPreset("蛇行道", NT, 53); //ZX： 支线
-ZX1.difficulty = 20;
+ZX1.difficulty = 10;
 ZX1.noLighting = true;
 ZX1.alwaysUnlocked = false;
 ZX1.addStartingItems = true;
@@ -84,7 +84,7 @@ ZX1.localizedName = "蛇行道";
 exports.ZX1 = ZX1;
 
 const ZX2 = new SectorPreset("地火", NT, 80);
-ZX2.difficulty = 25;
+ZX2.difficulty = 12;
 ZX2.noLighting = true;
 ZX2.alwaysUnlocked = false;
 ZX2.addStartingItems = true;

@@ -12,9 +12,9 @@
             "超浓缩精华液/0.1"
         ]
     },
-    "itemsPerSecond": 15,
+    "itemsPerSecond": 50,
     "requirements": [
-        "神秘物质/99"
+        "神秘物质/19"
     ],
     "category": "crafting"
 }

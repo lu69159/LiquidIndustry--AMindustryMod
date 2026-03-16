@@ -1,3 +1,10 @@
+/*
+function newUnit(name, unitType) {
+	const u = extend(UnitType, name, {});
+	u.constructor = () => extend(unitType, {});
+	return exports[name] = u;
+}
+*/
 const type = require("base/type");
 const healCommand = type.HealCommand();
 

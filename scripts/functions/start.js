@@ -21,8 +21,8 @@ Events.on(EventType.ClientLoadEvent, cons(e => {
             left().
             growX().
             wrap().
-            width(850).
-            maxWidth(900).
+            width(1200).
+            maxWidth(1200).
             pad(4).
             labelAlign(Align.left);
             table.row();

@@ -1,4 +1,4 @@
-const I = require("newitems");
+const I = require("LI/LIitems");
 var CENTER, Region, bottomRegion, 光环Region;
 
 const JHTQY = extend(ItemSource, "精华提取源", {

@@ -1,6 +1,5 @@
 {
 	"name": "衰变熔岩",
-	"description": "提取神秘物质的危险副产物，极易自燃自爆。\n建议焚化炉处理。",
 	"alwaysUnlocked":false,
 	"incinerable": false,
     "effect": "burning",

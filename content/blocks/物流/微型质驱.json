@@ -1,0 +1,22 @@
+{
+	"name": "微型质驱",
+	"health": 50,
+	"size": 1,
+    "itemCapacity": 50,
+	"minDistribute": 5,
+	"reload": 150,
+	"range": 176,
+	"knockback": 2,
+	"consumes": {
+        "power": 0.3
+    },
+	"requirements": [
+        "lead/30",
+        "copper/30",
+        "thorium/10",
+        "silicon/15"
+    ],
+	"category": "distribution"
+	//新地图做完再添加research
+	//"research": "mass-driver"
+}

@@ -1,6 +1,6 @@
 {
 	"name": "高压发射器",
-	"health": 50,
+	"health": 230,
 	"size": 3,
 	"hasPower": false,
     "itemCapacity": 80,

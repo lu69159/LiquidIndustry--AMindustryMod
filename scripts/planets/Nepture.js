@@ -1,5 +1,6 @@
 const jh = new ParticleWeather("极寒");
 const NT = new Planet("Nepture", Planets.sun, 1.2, 2.5);
+NT.localizedName = "尼普顿";
 NT.description = "温度极低，暗无天日，常年暴雪。地表矿物稀缺，存在大量未被开发的液体资源。";
 NT.meshLoader = prov(() => new MultiMesh(
 	new HexMesh(NT, 5),
@@ -35,6 +36,7 @@ NT.landCloudColor = Color.valueOf("D8F3FF80");
 NT.visible = true;
 NT.accessible = true;
 NT.alwaysUnlocked = true;
+NT.allowCampaignRules = true;
 NT.allowSectorInvasion = false;
 //NT.allowLaunchToNumbered = false;
 NT.clearSectorOnLose = true;

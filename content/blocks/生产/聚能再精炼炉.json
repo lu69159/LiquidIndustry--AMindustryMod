@@ -1,16 +1,17 @@
 {
-	"name": "再精炼高炉",
-    "size": 4,
+	"name": "聚能再精炼炉",
+    "description": "体积更小，精炼效率大幅提高",
+    "size": 3,
 	"health": 580,
-    "hasItems": true,
+    "hasItems": false,
 	"hasLiquids": true,
     "hasPower": true,
     "outputsLiquid": true,
-    "itemCapacity": 30,
     "liquidCapacity": 120,
     "category": "crafting",
+    /*
     "research": {
-		"parent": "废液离心机",
+		"parent": "再精炼高炉",
 		"objectives": [
 			{
 				"type": "SectorComplete",
@@ -18,30 +19,24 @@
 			}
 		]
 	},
+    */
     "craftTime": 80,
     "craftEffect": "none",
     "consumes": {
-		"power": 5.2,
-		"liquid": {
-			"liquid": "一级精炼废液",
-			"amount": 0.6
-		}
+		"power": 5.5,
+        "liquids":[
+            "一级精炼废液/0.4"
+        ]
 	},
     "requirements": [
-        "titanium/225",
-        "metaglass/75",
-        "silicon/100",
-        "phase-fabric/20"
+        "titanium/175",
+        "metaglass/50",
+        "silicon/75",
+        "治愈质/45",
+        "亲水质/20"
 	],
-    "outputItems": [
-        {"item": "copper","amount": 4},
-        {"item": "lead","amount": 4},
-        {"item": "titanium","amount": 2},
-        {"item": "thorium","amount": 1},
-        {"item": "graphite","amount": 1}
-    ],
     "outputLiquids": [
-        "二级精炼废液/0.2"
+        "二级精炼废液/0.4"
     ],
     "drawer": {
         "type": "DrawMulti",
@@ -52,10 +47,10 @@
             },
             {
                 "type": "DrawBubbles"
-            },
+            },  
             {
                 "type": "DrawArcSmelt",
-                "flameColor": "9A9DBFA0"
+                "flameColor": "B0BAC0FF"
             },
             {
                 "type": "DrawLiquidTile",
@@ -64,11 +59,7 @@
             {
                 "type": "DrawLiquidTile",
                 "drawLiquid": "二级精炼废液"
-            },
-            {
-				"type": "DrawFade",
-				"suffix": "-top"
-			},     
+            },   
             "DrawDefault"
         ]
     }

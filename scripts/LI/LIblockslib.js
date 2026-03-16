@@ -1,5 +1,6 @@
 const type = require("base/type");
-const status = require("status");
+const status = require("LI/LIstatus");
+const MC = require("base/MultiCrafterlib");
 
 //自定义地板
 const JHXQ = extend(Floor, "禁核心区", {
@@ -49,10 +50,10 @@ const ZSHFYD = extend(NuclearReactor, "重水核反应堆", {});
 ZSHFYD.consumeItems(ItemStack.with(
     Items.thorium, 1,
 ));
-ZSHFYD.consumeLiquid(require("newliquids")["重水"], 1.8/60);
+ZSHFYD.consumeLiquid(require("LI/LIliquids")["重水"], 1.8/60);
 ZSHFYD.consumeLiquid(Liquids.cryofluid, 6/60).update = false;
 ZSHFYD.buildType = prov(() => {
-	var ZS = require("newliquids")["重水"];
+	var ZS = require("LI/LIliquids")["重水"];
 	return extend(NuclearReactor.NuclearReactorBuild, ZSHFYD, {
 		updateTile(){
             var fuel = this.items.get(this.block.fuelItem), fullness = fuel * 1.0 / this.block.itemCapacity;		
@@ -69,7 +70,7 @@ ZSHFYD.buildType = prov(() => {
                 this.heat = Math.max(0, this.heat - Time.delta / this.block.ambientCooldownTime);
             }
 
-            if(this.heat > 0 && this.liquids.get(ZS) > 0.001){
+            if(this.heat > 0 && this.liquids.get(ZS) > 0.1 && this.liquids.get(Liquids.cryofluid) > 0.1){
 				var ZSefficiency = this.liquids.get(ZS) >= 10 ? 1 : 10 / this.liquids.get(ZS);
                 var maxUsed = Math.min(this.liquids.get(Liquids.cryofluid), this.heat / this.block.coolantPower * ZSefficiency);	
                 this.heat -= maxUsed * this.block.coolantPower;
@@ -129,35 +130,35 @@ exports.人造太阳 = RZTY;
 const CSTQ = new OverdriveProjector("超速天穹");
 exports.超速天穹 = CSTQ;
 
-const CPTY = type.StatusProjetor("超频投影", StatusEffects.overclock);
+const CPTY = type.StatusProjector("超频投影", StatusEffects.overclock);
 exports.超频投影 = CPTY;
 
-const BHTY = type.StatusProjetor("保护投影", StatusEffects.shielded);
+const BHTY = type.StatusProjector("保护投影", StatusEffects.shielded);
 exports.保护投影 = BHTY;
 
-const JDTY = type.StatusProjetor("解冻投影", status.解冻);
+const JDTY = type.StatusProjector("解冻投影", status.解冻);
 exports.解冻投影 = JDTY;
 
 const ZTQDSeq = Seq.with(StatusEffects.overclock, StatusEffects.shielded);
-const ZTQD = type.StatusProjetor("状态穹顶", ZTQDSeq);
+const ZTQD = type.StatusProjector("状态穹顶", ZTQDSeq);
 exports.状态穹顶 = ZTQD;
 
-const RHTY = type.EnemyStatusProjetor("弱化投影", StatusEffects.sapped);
+const RHTY = type.EnemyStatusProjector("弱化投影", StatusEffects.sapped);
 exports.弱化投影 = RHTY;
 
-const MBTY = type.EnemyStatusProjetor("麻痹投影", StatusEffects.electrified);
+const MBTY = type.EnemyStatusProjector("麻痹投影", StatusEffects.electrified);
 exports.麻痹投影 = MBTY;
 
-const HSTY = type.EnemyStatusProjetor("缓速投影", StatusEffects.slow);
+const HSTY = type.EnemyStatusProjector("缓速投影", StatusEffects.slow);
 exports.缓速投影 = HSTY;
 
-const RHQD = type.EnemyStatusProjetor("弱化穹顶", StatusEffects.sapped);
+const RHQD = type.EnemyStatusProjector("弱化穹顶", StatusEffects.sapped);
 exports.弱化穹顶 = RHQD;
 
-const MBQD = type.EnemyStatusProjetor("麻痹穹顶", StatusEffects.electrified);
+const MBQD = type.EnemyStatusProjector("麻痹穹顶", StatusEffects.electrified);
 exports.麻痹穹顶 = MBQD;
 
-const HSQD = type.EnemyStatusProjetor("缓速穹顶", StatusEffects.slow);
+const HSQD = type.EnemyStatusProjector("缓速穹顶", StatusEffects.slow);
 exports.缓速穹顶 = HSQD;
 
 //核心
@@ -272,7 +273,7 @@ const JXCNQ = type.WallLiquidRouter("巨型超能墙");
 exports.巨型超能墙 = JXCNQ;
 
 //生产
-//固液转化器，终能聚合器，神能凝聚仪
+//终能聚合器，神能凝聚仪
 const BLFYFLJ = new Separator("冰冷废液分离机");
 exports.冰冷废液分离机 = BLFYFLJ;
 
@@ -302,6 +303,9 @@ exports.再精炼高炉 = ZJLGL;
 
 const JHTQGC = new GenericCrafter("精华提取工厂");
 exports.精华提取工厂 = JHTQGC
+
+const JNZJLL = new GenericCrafter("聚能再精炼炉");
+exports.聚能再精炼炉 = JNZJLL;
 
 const QSZHCQ = new GenericCrafter("亲水质合成器");
 exports.亲水质合成器 = QSZHCQ;
@@ -339,6 +343,118 @@ exports.相织布分解器 = XZBFJQ;
 const JLHJFJQ = new GenericCrafter("巨浪合金分解器");
 exports.巨浪合金分解器 = JLHJFJQ;
 
+const GYZHQ = MC.MultiCrafter("固液转化器", [
+    //液->固	
+    {
+        input: {       
+            items: ["液体工艺-亲水质/1"],  
+            liquids: ["water/450"],
+            power: 8
+        },
+        output: {
+            items: ["液体工艺-固态水/1"],
+        },
+        craftTime: 300 
+    },
+    {
+        input: {
+            items: ["液体工艺-亲水质/1"],
+            liquids: ["液体工艺-重水/450"],
+            power: 8
+        },
+        output: {
+            items: ["液体工艺-固态重水/1"],
+        },
+        craftTime: 300 
+    },
+    {
+        input: {
+            items: ["液体工艺-亲水质/1"],
+            liquids: ["cryofluid/450"],
+            power: 8
+        },
+        output: {
+            items: ["液体工艺-固态冷冻液/1"],
+        },
+        craftTime: 300 
+    },
+    {
+        input: {
+            items: ["液体工艺-亲水质/1"],
+            liquids: ["oil/450"],
+            power: 8
+        },
+        output: {
+            items: ["液体工艺-固态石油/1"],
+        },
+        craftTime: 300 
+    },
+    {
+        input: {
+            items: ["液体工艺-亲水质/1"],
+            liquids: ["液体工艺-超级冷冻液/450"],
+            power: 8
+        },
+        output: {
+            items: ["液体工艺-固态超级冷冻液/1"],
+        },
+        craftTime: 300 
+    },
+//固->液
+    {
+        input: {       
+            items: ["液体工艺-固态水/1"],
+            power: 0.5
+        },
+        output: {
+            liquids: ["water/450"]
+        },
+        craftTime: 30
+    },
+    {
+        input: {       
+            items: ["液体工艺-固态重水/1"],
+            power: 0.5
+        },
+        output: {
+            liquids: ["液体工艺-重水/450"]
+        },
+        craftTime: 30
+    },
+    {
+        input: {       
+            items: ["液体工艺-固态冷冻液/1"],
+            power: 0.5
+        },
+        output: {
+            liquids: ["cryofluid/450"]
+        },
+        craftTime: 30
+    },
+    {
+        input: {       
+            items: ["液体工艺-固态石油/1"],
+            power: 0.5
+        },
+        output: {
+            liquids: ["oil/450"]
+        },
+        craftTime: 30
+    },
+    {
+        input: {       
+            items: ["液体工艺-固态超级冷冻液/1"],
+            power: 0.5
+        },
+        output: {
+            liquids: ["液体工艺-超级冷冻液/450"]
+        },
+        craftTime: 30
+    }
+]);
+GYZHQ.selectionColumns = 5;
+exports.固液转化器 = GYZHQ;
+
 //物流
 //双传带,双传桥,双传路由器,双传交叉器
 const TCSD = new Conveyor("钍传送带");
@@ -350,8 +466,11 @@ exports.相织布卸载器 = XZBXZQ;
 const GYFSQ = new MassDriver("高压发射器");
 exports.高压发射器 = GYFSQ;
 
+const WXZQ = new MassDriver("微型质驱");
+exports.微型质驱 = WXZQ;
+
 //液流
-//液体质驱,液体卸载器
+//液体卸载器
 const JXCYG = new LiquidRouter("巨型储液罐");
 exports.巨型储液罐 = JXCYG;
 
@@ -360,6 +479,12 @@ exports.钛导管桥 = TDGQ;
 
 const ZKB = new Pump("真空泵");
 exports.真空泵 = ZKB;
+
+const YTZQ = type.LiquidMassDriver("液体质驱", 4);
+exports.液体质驱 = YTZQ;
+
+const WXYTZQ = type.LiquidMassDriver("微型液体质驱", 2);
+exports.微型液体质驱 = WXYTZQ;
 
 //钻头
 const QXCSJ = new SolidPump("强效抽水机");
@@ -388,8 +513,6 @@ const SCQ = require("blocks/IL/双传桥").ILbridge;
 const BRFYL = require("blocks/爆燃反应炉").BRFYL;
 const JHTQY = require("blocks/精华提取源").JHTQY;
 const JG = require("blocks/极光").极光;
-const GYZHQ = require("blocks/固液转化器").固液转化器;
 const SNNJY = require("blocks/神能凝聚仪").神能凝聚仪;
 const YTXZQ = require("blocks/液体卸载器").液体卸载器;
-const YTZQ = require("blocks/液体质驱").液体质驱;
 const ZNJHQ = require("blocks/终能聚合器").终能聚合器;

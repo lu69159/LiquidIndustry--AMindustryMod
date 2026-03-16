@@ -8,11 +8,11 @@
     "hasPower": true,
     "outputsLiquid": true,
     "canOverdrive": false,
-    "itemCapacity": 1,
-    "liquidCapacity": 66, 
+    "itemCapacity": 15,
+    "liquidCapacity": 20, 
     "buildCostMultiplier": 5,
     "category": "crafting",
-    "craftTime": 60,
+    "craftTime": 900,
     "requirements": [
         "metaglass/220",
         "graphite/1288",
@@ -22,14 +22,14 @@
     "consumes": {
 		"power": 666,
         "items":[
-            "metaglass/1",
-            "graphite/1",
-            "silicon/1",
-            "plastanium/1",
-            "surge-alloy/1",
-            "phase-fabric/1",
-            "治愈质/1",
-            "超导质/1",
+            "metaglass/15",
+            "graphite/15",
+            "silicon/15",
+            "plastanium/15",
+            "surge-alloy/15",
+            "phase-fabric/15",
+            "治愈质/15",
+            "超导质/15",
             "神秘物质/1"
         ],
 		"liquids": [

@@ -25,9 +25,7 @@ function isBadEffect(effect){
 }
 ///////////////////////////////////////////////////////////////
 
-//var alleffects = Vars.content.getBy(ContentType.status); 
 const badeffects = new Seq();
-
 Events.on(ContentInitEvent, cons(e => {
     Vars.content.getBy(ContentType.status).each(e => {
         if(isBadEffect(e)){
@@ -42,6 +40,20 @@ Events.on(ContentInitEvent, cons(e => {
 
 const baseSize = 26; //王座为例
 const 神佑 = extend(StatusEffect, "神佑", {
+    init(){
+        Vars.content.getBy(ContentType.status).each(e => {
+            if(isBadEffect(e)){
+                if(!badeffects.contains(e)){
+                    badeffects.add(e);
+                }
+            }
+        });
+        badeffects.each(e => {
+            if(!this.opposites.contains(e)){
+                this.handleOpposite(e);
+            }
+        });
+    },
     draw(unit){
         this.super$draw(unit);
 
@@ -76,7 +88,6 @@ const 神佑 = extend(StatusEffect, "神佑", {
         this.super$applied(unit, time, extend)
     }
 });
-
 exports.神佑 = 神佑;
 
 

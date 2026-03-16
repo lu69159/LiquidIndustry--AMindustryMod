@@ -13,11 +13,10 @@
 	"explosionMinWarmup": 0.5,
 
 	"outputsPower": true,
-    "powerProduction": 340.5,
+    "powerProduction": 360.5,
 	"itemDuration": 60,
     "lightColor": "FFEEEE",
-	"ambientSound": "explosionAfflict", //我没试听过啊（）
-    "ambientSoundVolume": 0.075,	
+	"ambientSound": "none", 
 	"explosionShake": 12,
 	"explosionShakeDuration": 240,
 	"explosionRadius": 64,
@@ -62,7 +61,6 @@
 			}			
 		]
 	},
-	"updateEffect": "explosion",
     "fuelItem": "固态石油",
 	"heating": 0.06,
     "coolantPower": 1.5,

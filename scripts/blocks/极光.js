@@ -1,4 +1,3 @@
-
 var damagemin = 30 / 6, damagemax = 3000 / 6,
     beforeTime = 5, durationTime = 12;
 var lightRegion, STRegion;

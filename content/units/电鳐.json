@@ -42,6 +42,8 @@
         {
             "type": "EnergyFieldAbility",
             "color": "8AA3F4FF",
+            "sectors": 1,
+            "sectorRad": 1,
             "range": 260,
             "reload": 75,
             "hitUnits": true,

@@ -214,7 +214,10 @@ exports.MultiCrafter = (name, recipes) => {
             }
 
             if(this.AllInputItems.size > 0) this.acceptsItems = true;
-            if(this.AllOutputLiquids.size > 0) this.outputsLiquids = true;
+            if(this.AllOutputLiquids.size > 0){
+                this.outputsLiquid = true;
+                this.outputLiquid = new LiquidStack(this.AllOutputLiquids.get(0), 0);
+            }
 
             this.consumeBuilder.add(extend(ConsumePower, {
                 usage: 0,

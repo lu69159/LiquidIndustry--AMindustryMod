@@ -1,4 +1,4 @@
-const LIblockslib = require("base/LIblockslib");
+const LIblockslib = require("LI/LIblockslib");
 const lib = require("base/lib");
 const maps = require("map/maps");
 
@@ -9,7 +9,6 @@ const SCD = require("blocks/IL/双传带").ILduct;
 const SCJCQ = require("blocks/IL/双传交叉器").ILjunction;
 const SCLYQ = require("blocks/IL/双传路由器").ILrouter;
 const SCQ = require("blocks/IL/双传桥").ILbridge;
-const YTZQ = require("blocks/液体质驱").液体质驱;
 
 Events.on(ContentInitEvent, cons(e => {
     //超能墙
@@ -74,7 +73,7 @@ Events.on(ContentInitEvent, cons(e => {
         parent: SCLYQ.name,
         objectives: Seq.with(
             new Objectives.Research(Blocks.massDriver),
-            new Objectives.Research(YTZQ)
+            new Objectives.Research(LIblockslib.液体质驱)
         )
     });
 

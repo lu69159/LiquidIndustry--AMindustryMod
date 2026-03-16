@@ -1,0 +1,23 @@
+{
+	"name": "微型液体质驱",
+	"health": 680,
+    "size": 1,
+	"range": 264,
+	"reload": 150,
+	"knockback": 2,
+	"liquidCapacity": 1200,
+	"minDistribute": 100,
+	"consumes": {
+		"power": 0.8
+	},
+	"requirements": [
+		"metaglass/20",
+		"titanium/20",
+        "thorium/15",
+        "silicon/15",
+        "亲水质/1"
+    ],
+	"category": "liquid"
+    //新地图做完再添加research
+	//"research": "液体质驱"
+}

@@ -6,12 +6,12 @@
 	"hasLiquids": true,
 	"hasItems": true,
     "itemCapacity": 5,
-	"liquidCapacity": 1500,
+	"liquidCapacity": 1800,
     "requirements": [
 		"metaglass/300",
         "titanium/240",
         "silicon/300",
-        "亲水质/50"
+        "亲水质/20"
 	],
     "category": "crafting",
     "research": {

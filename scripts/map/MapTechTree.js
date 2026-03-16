@@ -1,5 +1,5 @@
 const lib = require("base/lib");
-const LIblockslib = require("base/LIblockslib");
+const LIblockslib = require("LI/LIblockslib");
 const SD = require("blocks/cores/闪电核心");
 const maps = require("map/maps");
 

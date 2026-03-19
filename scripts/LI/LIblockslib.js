@@ -235,6 +235,9 @@ const MF = extend(ItemTurret, "埋伏", {
 });
 exports.埋伏 = MF;
 
+const BP = new ItemTurret("爆破");
+exports.爆破 = BP;
+
 const ZBPT = new PowerTurret("作弊炮塔");
 exports.作弊炮塔 = ZBPT;
 

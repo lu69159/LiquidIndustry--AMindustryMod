@@ -54,7 +54,7 @@ exports.MultiCrafter = (name, recipes) => {
         hasPower: true,
         configurable: true,
         saveConfig: true,
-        clearOnDoubleTap: true,
+        clearOnDoubleTap: false,
         Recipes: [],
         allOutputsT: [],
 
